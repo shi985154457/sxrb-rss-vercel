@@ -21,8 +21,7 @@ async function fetchHTML(url) {
       signal: ctrl.signal,
     });
     if (!r.ok) throw new Error('HTTP ' + r.status);
-    const buf = await r.arrayBuffer();
-    return new TextDecoder('gbk').decode(buf);
+    return r.text();
   } finally { clearTimeout(t); }
 }
 
